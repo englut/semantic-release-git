@@ -1,19 +1,18 @@
 {
-  "name": "@semantic-release/git",
+  "name": "semantic-release-git",
   "description": "semantic-release plugin to commit release assets to the project's git repository",
   "version": "0.0.0-development",
-  "author": "Pierre Vanduynslager (https://github.com/pvdlg)",
+  "author": "quaff (https://sr.ht/~quaff)",
   "ava": {
     "files": [
       "test/**/*.test.js"
     ]
   },
   "bugs": {
-    "url": "https://github.com/semantic-release/git/issues"
+    "url": "https://github.com/englut/semantic-release-git/issues"
   },
   "contributors": [
-    "Stephan Bönnemann <stephan@boennemann.me> (http://boennemann.me)",
-    "Gregor Martynus (https://twitter.com/gr2m)"
+    "quaff (https://sr.ht/~quaff)"
   ],
   "dependencies": {
     "@semantic-release/error": "^3.0.0",
@@ -45,7 +44,7 @@
     "lib",
     "index.js"
   ],
-  "homepage": "https://github.com/semantic-release/git#readme",
+  "homepage": "https://github.com/englut/semantic-release-git#readme",
   "keywords": [
     "changelog",
     "commit",
@@ -83,7 +82,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/semantic-release/git.git"
+    "url": "https://github.com/englut/semantic-release-git.git"
   },
   "scripts": {
     "lint": "xo",
