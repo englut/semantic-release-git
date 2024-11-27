@@ -271,7 +271,7 @@ test('Skip commit if there is no files to commit', async (t) => {
   t.deepEqual(await gitCommitedFiles('HEAD', {cwd, env}), []);
 });
 
-test('Allow to disable the label "[skip ci]" in commit message', async t => {
+test('Allow to disable the label "[skip ci]" in commit message', async (t) => {
   const {cwd, repositoryUrl} = await gitRepo(true);
   const pluginConfig = {
     skipCi: false,
@@ -294,10 +294,27 @@ test('Allow to disable the label "[skip ci]" in commit message', async t => {
   t.is(commit.body, `${nextRelease.notes}\n`);
 });
 
-test('Push commit with "ci.skip" push-option without error', async t => {
+test('Push commit with "ci.skip" push-option without error', async (t) => {
   const {cwd, repositoryUrl} = await gitRepo(false);
   const pluginConfig = {
-    skipCi: 'pushOption',
+    skipCi: {pushOption: 'ci.skip'},
+  };
+  const branch = {name: 'master'};
+  const options = {repositoryUrl};
+  const env = {};
+  const lastRelease = {version: 'v9.9.9'};
+  const nextRelease = {version: '10.0.0', gitTag: '10.0.0', notes: 'Release note test'};
+  await outputFile(path.resolve(cwd, 'package.json'), "{name: 'test-great-lib'}");
+
+  t.notThrows(async () =>
+    prepare(pluginConfig, {cwd, env, options, branch, lastRelease, nextRelease, logger: t.context.logger})
+  );
+});
+
+test('Push commit with "skip-ci" push-option without error', async (t) => {
+  const {cwd, repositoryUrl} = await gitRepo(false);
+  const pluginConfig = {
+    skipCi: {pushOption: 'skip-ci'},
   };
   const branch = {name: 'master'};
   const options = {repositoryUrl};
