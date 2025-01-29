@@ -16,8 +16,8 @@ const {
 
 test.beforeEach((t) => {
   // Clear npm cache to refresh the module state
-  clearModule('..');
-  t.context.m = require('..');
+  clearModule('../index.js');
+  t.context.m = require('../index.js');
   // Stub the logger
   t.context.log = stub();
   t.context.logger = {log: t.context.log};
